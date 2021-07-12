@@ -17,7 +17,7 @@ class PagesController extends AbstractController
         //     'controller_name' => 'Accueil',
         // ]);
         if (!$this->getUser()) {
-            $this->addFlash('danger', 'Vous n\'avez pas accès à cette page');
+            
             return $this->redirectToRoute('app_login');
         }
         else {
