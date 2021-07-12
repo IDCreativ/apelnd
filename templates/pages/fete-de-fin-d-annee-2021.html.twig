@@ -1,0 +1,27 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ controller_name }} - {{ parent() }}{% endblock %}
+
+{% block body %}
+    <div class="container mt-5">
+		<div class="row">
+			<div class="col">
+				<div class="waiting-block">
+					<div class="countdown-container">
+						<h1 class="text-center text-uppercase">{{ controller_name }}<br><small>"{{ tagline }}"</small></h1>
+						<!-- <label id="countdown"></label> -->
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="container my-5">
+		<div class="row">
+			<div class="col-lg-9 mx-auto">
+                <video id='myvideo' controls oncontextmenu="return false;" controlsList="nodownload" poster="/assets/img/minia-yt.jpg">
+				<source src="/uploads/videos/NDR2021_SPECTACLE_ECOLE.mp4">
+                </video>
+			</div>
+		</div>
+	</div>
+{% endblock %}

@@ -1,0 +1,82 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Socket.io sur Alwaysdata{% endblock %}
+
+{% block body %}
+    <section id="event-section">
+        <div class="container">
+            <div class="row">
+                <div class="col mx-auto my-5">
+                    <h2>Exemple de page de chat</h2>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section>
+        <div class="container">
+            <div class="row">
+                <div class="col">
+                    <div>
+                        <div class="card mb-5">
+                            <div class="card-header">
+                                Messagerie
+                            </div>
+                            <div class="card-body"> 
+                                <ul id="messages"></ul>
+                            </div>
+                            <div class="card-footer">
+                                <div class="input-group">
+                                    <input id="m" type="text" class="form-control" placeholder="Aa" aria-label="" aria-describedby="button-send">
+                                    <button class="btn btn-outline-secondary btn-sm" type="button" id="button-send">Envoyer</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+<script>
+var input = document.getElementById("m");
+var button = document.getElementById("button-send");
+button.addEventListener("click", function (eventClick) {
+    eventClick.preventDefault();
+    console.log("on clic")
+    send();
+    input.value = "";
+})
+// Envoi du message quand on appuie sur "ENTER"
+input.addEventListener("keyup", function(event) {
+    if (event.keyCode === 13) {
+        event.preventDefault();
+        send();
+        input.value = "";
+    }
+});
+
+var socket = io('https://blue-com.alwaysdata.net', {
+    withCredentials: false,
+    transportationOptions: {
+        polling: {
+            extraHeaders: {
+                "my-custom-header": "abcd"
+            }
+        }
+    }
+});
+
+var send = function () {
+    var text = document.getElementById('m').value;
+    socket.emit('chat message',text);
+    input.value = "";
+}
+
+var receive = function(msg) {
+    var li = document.createElement('li');
+    li.innerText = msg;
+    document.getElementById('messages').appendChild(li);
+}
+socket.on('chat message', receive);
+</script>
+{% endblock %}

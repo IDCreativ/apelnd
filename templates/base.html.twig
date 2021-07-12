@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>{% block title %}APEL Notre Dame du Rosaire{% endblock %}</title>
+        <link rel="apple-touch-icon" sizes="57x57" href="assets/img/apple-icon-57x57.png">
+        <link rel="apple-touch-icon" sizes="60x60" href="assets/img/apple-icon-60x60.png">
+        <link rel="apple-touch-icon" sizes="72x72" href="assets/img/apple-icon-72x72.png">
+        <link rel="apple-touch-icon" sizes="76x76" href="assets/img/apple-icon-76x76.png">
+        <link rel="apple-touch-icon" sizes="114x114" href="assets/img/apple-icon-114x114.png">
+        <link rel="apple-touch-icon" sizes="120x120" href="assets/img/apple-icon-120x120.png">
+        <link rel="apple-touch-icon" sizes="144x144" href="assets/img/apple-icon-144x144.png">
+        <link rel="apple-touch-icon" sizes="152x152" href="assets/img/apple-icon-152x152.png">
+        <link rel="apple-touch-icon" sizes="180x180" href="assets/img/apple-icon-180x180.png">
+        <link rel="icon" type="image/png" sizes="192x192"  href="assets/img/android-icon-192x192.png">
+        <link rel="icon" type="image/png" sizes="32x32" href="assets/img/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="96x96" href="assets/img/favicon-96x96.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="assets/img/favicon-16x16.png">
+        <meta name="msapplication-TileColor" content="#ffffff">
+        <meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
+        <meta name="theme-color" content="#ffffff">
+        <meta property="og:image:type" content="jpg"/>
+        <meta property="og:image:width" content="512"/>
+        <meta property="og:image:height" content="512"/>
+        <meta property="og:image:alt" content="APEL Notre Dame du Rosaire"/>
+        <meta property="og:url" content=""/>
+        <script src='https://blue-com.alwaysdata.net/socket.io/socket.io.js'></script>
+        {% block stylesheets %}
+            <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.15.2/css/all.css" integrity="sha384-yJpxAFV0Ip/w63YkZfDWDTU6re/Oc3ZiVqMa97pi8uPt92y0wzeK3UFM2yQRhEom" crossorigin="anonymous">
+            {{ encore_entry_link_tags('app') }}
+        {% endblock %}
+
+        {% block javascripts %}
+        <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+            {{ encore_entry_script_tags('app') }}
+        {% endblock %}
+    </head>
+    <body>
+        <nav>
+            <div class="container">
+                <div class="row">
+                    <div class="col">
+                        <div class="logo">
+                            <div class="img-wrapper">
+                                <img src="assets/img/logo.jpg" alt="">
+                            </div>
+                            <div class="tagline"><span class="text-primary">École Notre Dame du Rosaire</span> - <span class="text-secondary">Chauvigny</span></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </nav>
+        <div class="flash-messages">      
+            {% for label, messages in app.flashes %}
+                {% for message in messages %}
+                    {% if message %}
+                        <div class="alert alert-{{ label }} alert-dismissible fade show my-2" role="alert">
+                            {{ message }}
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        </div>                                    
+                    {% endif %}
+                {% endfor %}
+            {% endfor %}
+        </div>
+        <main>
+            {% block body %}{% endblock %}
+        </main>
+        <footer class="mt-5 py-3">
+            <div class="container">
+                <div class="row">
+                    <div class="col">
+                        <div class="copyright text-center">
+                            © APEL École Notre Dame du Rosaire - 2021
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </body>
+</html>
