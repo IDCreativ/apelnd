@@ -37,20 +37,20 @@
 
                         <input type="hidden" name="_csrf_token"
                             value="{{ csrf_token('authenticate') }}">
-                        <div class="checkbox mb-3">
+                        {# <div class="checkbox mb-3">
                             <label>
                                 <input type="checkbox" name="_remember_me" checked> Se souvenir de moi
                             </label>
-                        </div>
+                        </div> #}
                         <button class="btn btn-primary" type="submit">
                             Se connecter
                         </button>
                     </form>
                 </div>
-                <div class="card-footer d-flex justify-content-between">
+                {# <div class="card-footer d-flex justify-content-between">
                     <a href="{{ path('app_forgot_password_request') }}" title="Récupérez votre mot de passe">Mot de passe perdu</a>
                     <a href="{{ path('app_register') }}" title="Créer un compte">Créer un compte</a>
-                </div>
+                </div> #}
             </div>
         </div>
     </div>
